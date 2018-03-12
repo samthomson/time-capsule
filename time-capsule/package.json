@@ -1,11 +1,21 @@
 {
   "name": "time-capsule",
   "version": "1.0.0",
-  "description": "",
+  "description": "creates a historic log of cryptocurrency data",
+  "repository": "https://github.com/samthomson/time-capsule",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "sequelize": "^4.36.0"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.7",
+    "typescript": "^2.7.2"
+  },
   "scripts": {
+    "build": "tsc",
+    "fixlint": "tslint --fix src/**.*",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
