@@ -3,9 +3,13 @@ services:
   workspace:
     build:
       context: .
+    environment:
+      - MYSQL_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=time-capsule
     volumes:
       - .:/usr/app
-      - /usr/app/node_modules
+      - node_modules:/usr/app/node_modules
     ports:
       - "3100:3100"
     depends_on: [mysql]

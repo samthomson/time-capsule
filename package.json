@@ -5,10 +5,12 @@
   "repository": "https://github.com/samthomson/time-capsule",
   "main": "index.js",
   "dependencies": {
+    "mysql2": "^1.5.2",
     "sequelize": "^4.36.0"
   },
   "devDependencies": {
     "@types/node": "^9.4.7",
+    "@types/sequelize": "^4.27.10",
     "typescript": "^2.7.2"
   },
   "scripts": {
