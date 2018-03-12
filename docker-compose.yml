@@ -4,7 +4,7 @@ services:
     build:
       context: .
     volumes:
-      - ./time-capsule:/usr/app
+      - .:/usr/app
       - /usr/app/node_modules
     ports:
       - "3100:3100"
