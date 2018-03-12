@@ -4,9 +4,6 @@ import database from './db'
 export const LogEntry = database.define(
     'log_entry',
     {
-      test: {
-        type: Sequelize.STRING
-      }
     },
     {
       timestamps: true,
@@ -18,9 +15,9 @@ export const LogEntry = database.define(
 export const Currency = database.define(
     'currency',
     {
-      code: {
-        type: Sequelize.STRING
-      }
+      currency_literal_id: Sequelize.STRING,
+      name: Sequelize.STRING,
+      symbol: Sequelize.STRING,
     },
     {
       timestamps: true,
@@ -31,9 +28,19 @@ export const Currency = database.define(
 export const CurrencyEntry = database.define(
     'currency_entry',
     {
-      test: {
-        type: Sequelize.STRING
-      }
+      currency: Sequelize.INTEGER,
+      log_entry: Sequelize.INTEGER,
+      rank: Sequelize.INTEGER,
+      price_usd: Sequelize.DECIMAL(32,24),
+      price_btc: Sequelize.DECIMAL(32,24),
+      '24h_volume_usd': Sequelize.DECIMAL(32,24),
+      market_cap_usd: Sequelize.DECIMAL(32,24),
+      available_supply: Sequelize.DECIMAL(16,4),
+      total_supply: Sequelize.DECIMAL(16,4),
+      percent_change_1h: Sequelize.DECIMAL(8,4),
+      percent_change_24h: Sequelize.DECIMAL(8,4),
+      percent_change_7d: Sequelize.DECIMAL(8,4),
+      last_updated: Sequelize.INTEGER
     },
     {
       timestamps: true,
