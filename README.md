@@ -5,3 +5,10 @@ It logs current market prices for all crypto currencies on coinmarketcap.com onc
 
 Tech:
 - Typescript, MySQL, docker
+
+
+run locally
+-----------
+
+- clone and cd into repo
+- `docker-compose up`
