@@ -5,7 +5,7 @@
   "repository": "https://github.com/samthomson/time-capsule",
   "main": "index.js",
   "dependencies": {
-    "get-crypto-fiat-values": "^1.0.2",
+    "get-crypto-fiat-values": "^1.1.0",
     "mysql2": "^1.5.2",
     "sequelize": "^4.36.0"
   },

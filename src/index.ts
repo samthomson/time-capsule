@@ -1,46 +1,38 @@
-import database, { disconnectDatabase } from './db/db'
-import { LogEntry, Currency, CurrencyEntry } from './db/models'
+import database, {
+  disconnectDatabase
+} from './db/db'
+import {
+  createCurrencyEntry,
+  createLogEntry,
+  ensureCurrencyExists
+} from './db/helpers'
 
-import { getCryptoUSDValue } from 'get-crypto-fiat-values'
+import { getAllCryptoValues, CMCCurrencySnapshot } from 'get-crypto-fiat-values'
 
 const main = async () => {
 
-  const sCMCCurrencyId: string = 'dogecoin'
+  // get a collection of all currencies with data from CMC
+  const aAllCurrencyData: CMCCurrencySnapshot[] = await getAllCryptoValues() || []
+
+  // ensure the db has tables created for the models we use
+  await database.sync()
   
-  let dDogeUSD = await getCryptoUSDValue(sCMCCurrencyId)
-
-  console.log('dogecoin is at $', dDogeUSD)
+  // create a single log entry, which currency entries will relate to
+  let oLogEntry = await createLogEntry()
+  // save each currency entry
+  for (
+    let cCurrency = 0;
+    cCurrency < aAllCurrencyData.length;
+    cCurrency++
+  ) {
+    const oCMCCurrency = aAllCurrencyData[cCurrency]
+    // check the currency itself exists, that we'll relate this entry to
+    let oDBCurrency = await ensureCurrencyExists(oCMCCurrency)
+    await createCurrencyEntry(oDBCurrency.id, oLogEntry.id, oCMCCurrency)
+  }
   
-  database.sync().then(function() {
-
-    const ensureCurrencyExists = Currency.findOrCreate({
-      where: {
-        currency_literal_id: sCMCCurrencyId
-      },
-      defaults: {
-        currency_literal_id: sCMCCurrencyId,
-        symbol: 'DOGE',
-        name: 'Dogecoin'
-      }
-    })
-    const createCurrencyEntry = (iCurrencyId: number, dPriceUSD: number) => {
-      console.log('now save dogecoin at $', dPriceUSD)
-      return CurrencyEntry.create({
-        currency: iCurrencyId,
-        price_usd: dPriceUSD
-      })
-    }
-
-    return ensureCurrencyExists.then(oCurrency => {
-      console.log('save dogecoin as at $', dDogeUSD)
-      return createCurrencyEntry(oCurrency.id, dDogeUSD)
-    })
-
-
-
-  }).then(function(entry) {
-    disconnectDatabase()
-  })
+  // finally, disconnect the db when we're done with it
+  disconnectDatabase()
 }
 
 

@@ -26,3 +26,5 @@ services:
 volumes:
   mysqldata:
     driver: "local"
+  node_modules:
+    driver: "local"

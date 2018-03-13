@@ -1,4 +1,6 @@
 import * as Sequelize from 'sequelize'
+import { CMCCurrencySnapshot } from 'get-crypto-fiat-values'
+import { LogEntry, Currency, CurrencyEntry } from './models'
 
 const {
     MYSQL_DATABASE,
