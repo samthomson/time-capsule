@@ -8,7 +8,19 @@ export const LogEntry = database.define(
         type: Sequelize.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true,
-      }
+      },
+      currenciesSaved: {
+        type: Sequelize.SMALLINT.UNSIGNED,
+        allowNull: true,
+      },
+      CMCFetchTime: {
+        type: Sequelize.SMALLINT.UNSIGNED,
+        allowNull: true,
+      },
+      runtime: {
+        type: Sequelize.SMALLINT.UNSIGNED,
+        allowNull: true,
+      },
     },
     {
       timestamps: true,
@@ -32,7 +44,7 @@ export const Currency = database.define(
     {
       timestamps: true,
       freezeTableName: true,
-    }
+    },
 )
 
 export const CurrencyEntry = database.define(
@@ -60,5 +72,5 @@ export const CurrencyEntry = database.define(
     {
       timestamps: false,
       freezeTableName: true,
-    }
+    },
 )

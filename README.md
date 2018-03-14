@@ -9,7 +9,10 @@ Tech:
 ## run locally
 
 - clone and cd into repo
-- `docker-compose up`
+- setup contianers: `docker-compose up`
+- enter main workspace container: `docker-compose run workspace bash`
+- install all deps: `yarn`
+- start script: `yarn run start`
 
 
 ## How it works
