@@ -14,7 +14,8 @@ const dbConfig = {
     username: MYSQL_USER || 'root',
     password: MYSQL_PASSWORD || '',
     dialect: 'mysql',
-    logging: false
+    logging: false,
+    operatorsAliases: false
 }
 
 const database = new Sequelize(dbConfig)
