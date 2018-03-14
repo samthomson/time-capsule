@@ -18,7 +18,8 @@
     "build": "tsc",
     "fixlint": "tslint --fix src/**.*",
     "watch": "tsc --watch",
-    "start": "node dist/index.js",
+    "once": "node dist/once.js",
+    "cycle": "node dist/cycle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

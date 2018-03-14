@@ -11,10 +11,9 @@ import { getAllCryptoValues, CMCCurrencySnapshot } from 'get-crypto-fiat-values'
 
 let cMainIteration = 0
 
-const main = async () => {
+export const main = async () => {
   const dateStartedScript = new Date().getTime()
 
-  setTimeout(main, 60000)
   cMainIteration++
   console.log(`\n\nstarting time-capsule log, iteration: ${cMainIteration}`)
 
@@ -55,7 +54,4 @@ const main = async () => {
 
   await oLogEntry.save()
   console.log(`saved ${cSaved} currency entries`)
-  // console.log(`finished and disconnected`)
 }
-
-main()
