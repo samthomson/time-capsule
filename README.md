@@ -10,7 +10,7 @@ Tech:
 
 - clone and cd into repo
 - setup contianers: `docker-compose up`
-- enter main workspace container: `docker-compose run workspace bash`
+- enter main app container: `docker-compose run app bash`
 - install all deps: `yarn`
 - start script: `yarn run start`
 
@@ -35,3 +35,19 @@ Tech:
 
 #### relations
 A `log_entry` pertains to when the script was run. It has the time it was run. It relates one to many to `currency_entry`. The `currency_entry` relates one to one to a `currency`.
+
+## run on a server
+
+- set up a vps
+- install docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+- install docker-compose: https://www.digitalocean.com/community/tutorials/how-to-install-and-run-a-node-js-app-on-centos-6-4-64bit
+- clone repo (into `/usr/src` is a suitable place)
+- create env: `cd /usr/src/time-capsule && cp .env.sample .env`
+- edit env, set desired db name and password: `nano .env`
+- build our containers `docker-compose up -d`
+- enter the app container: `docker-compose run app bash`
+- install all deps: `yarn`
+- build typescript into javascript: `yarn build`
+- test run the script `yarn run once`
+- edit crontab: `crontab -e`
+- add task, set to run every minute: `* * * * * cd /usr/src/time-capsule && /usr/local/bin/docker-compose run app yarn run once`

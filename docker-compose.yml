@@ -1,12 +1,11 @@
 version: '2'
 services:
-  workspace:
+  app:
     build:
       context: .
     environment:
-      - MYSQL_PASSWORD=password
-      - MYSQL_USER=root
-      - MYSQL_DATABASE=time-capsule
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     volumes:
       - .:/usr/app
       - node_modules:/usr/app/node_modules
@@ -18,8 +17,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=time-capsule
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     volumes:
       - mysqldata:/var/lib/mysql
 

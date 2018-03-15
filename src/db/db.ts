@@ -4,15 +4,14 @@ import { LogEntry, Currency, CurrencyEntry } from './models'
 
 const {
     MYSQL_DATABASE,
-    MYSQL_USER,
-    MYSQL_PASSWORD
+    MYSQL_ROOT_PASSWORD
 } = process.env
 
 const dbConfig = {
     host: 'mysql',
     database: MYSQL_DATABASE || 'time-capsule',
-    username: MYSQL_USER || 'root',
-    password: MYSQL_PASSWORD || '',
+    username: 'root',
+    password: MYSQL_ROOT_PASSWORD || '',
     dialect: 'mysql',
     logging: false,
     operatorsAliases: false
