@@ -4,21 +4,20 @@ services:
     build:
       context: .
     environment:
-      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - .:/usr/app
-      - node_modules:/usr/app/node_modules
+      - .:/usr/src/time-capsule
     ports:
       - "3100:3100"
-    depends_on: [mysql]
-  mysql:
+    depends_on: [tc_database]
+  tc_database:
     image: mysql:5.7
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - mysqldata:/var/lib/mysql
 

@@ -8,7 +8,7 @@ const {
 } = process.env
 
 const dbConfig = {
-    host: 'mysql',
+    host: 'tc_database',
     database: MYSQL_DATABASE || 'time-capsule',
     username: 'root',
     password: MYSQL_ROOT_PASSWORD || '',

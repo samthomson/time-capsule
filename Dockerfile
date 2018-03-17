@@ -8,4 +8,4 @@ WORKDIR /usr/src/time-capsule
 RUN yarn
 
 # build typescript into javascript
-RUN yarn run build
+CMD yarn run build
