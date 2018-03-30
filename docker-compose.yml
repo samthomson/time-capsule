@@ -7,7 +7,7 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - .:/usr/src/time-capsule
+      - .:/timecapsule
     ports:
       - "3100:3100"
     depends_on: [tc_database]
@@ -19,10 +19,10 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - mysqldata:/var/lib/mysql
+      - timecapsule-mysqldata:/var/lib/timecapsule-mysql
 
 volumes:
-  mysqldata:
+  timecapsule-mysqldata:
     driver: "local"
   node_modules:
     driver: "local"

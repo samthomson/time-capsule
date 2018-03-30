@@ -1,11 +1,14 @@
 FROM node:9.3.0
-RUN yarn global add npm
 
 # within the docker container the project will be placed here
-WORKDIR /usr/src/time-capsule
+WORKDIR /time-capsule
+
+ADD . /time-capsule
+
+RUN yarn global add npm
 
 # install all deps
 RUN yarn
 
 # build typescript into javascript
-CMD yarn run build
+RUN yarn run build
