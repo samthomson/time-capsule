@@ -1,11 +1,9 @@
 import { 
     main
 } from './main'
+import { CronJob } from 'cron'
 
-
-const cycle = () => {
-    setTimeout(cycle, 60000)
+var taskEveryMinute = new CronJob('* * * * *', function() {
+    // run every minute
     main()
-}
-
-cycle()
+}, () => {}, true, 'Europe/London');

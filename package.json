@@ -5,6 +5,8 @@
   "repository": "https://github.com/samthomson/time-capsule",
   "main": "index.js",
   "dependencies": {
+    "@types/cron": "^1.3.0",
+    "cron": "^1.3.0",
     "get-crypto-fiat-values": "^1.1.0",
     "mysql2": "^1.5.2",
     "sequelize": "^4.36.0"
