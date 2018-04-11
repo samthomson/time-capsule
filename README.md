@@ -11,7 +11,6 @@ Tech:
 - clone and cd into repo
 - setup contianers: `docker-compose up`
 - enter main app container: `docker-compose run app bash`
-- install all deps: `yarn`
 - start script: `yarn run start`
 
 
@@ -47,5 +46,3 @@ A `log_entry` pertains to when the script was run. It has the time it was run. I
 - build our containers `docker-compose up -d`
 - enter the app container: `docker-compose run app bash`
 - test run the script `yarn run once`
-- edit crontab: `crontab -e`
-- add task, set to run every minute: `* * * * * cd /usr/src/time-capsule && /usr/local/bin/docker-compose run app yarn run once`
