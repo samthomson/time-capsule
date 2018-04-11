@@ -2,12 +2,12 @@ version: '2'
 services:
   app:
     build:
-      context: ./app
+      context: ./
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - ./app:/timecapsule/
+      - ./:/timecapsule/
     ports:
       - "3100:3100"
     depends_on: [tc_database]
