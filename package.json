@@ -7,6 +7,7 @@
   "dependencies": {
     "@types/cron": "^1.3.0",
     "cron": "^1.3.0",
+    "forever": "^0.15.3",
     "get-crypto-fiat-values": "^1.1.0",
     "mysql2": "^1.5.2",
     "sequelize": "^4.36.0"
@@ -22,6 +23,7 @@
     "watch": "tsc --watch",
     "once": "node dist/once.js",
     "cycle": "node dist/cycle.js",
+    "forever-cycle": "forever node dist/cycle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
