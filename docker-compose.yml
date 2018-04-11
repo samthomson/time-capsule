@@ -1,18 +1,13 @@
 version: '2'
 services:
-  applications:
-    build: 
-      context: ./applications
-    volumes:
-      - ./app:/timecapsule:cached
   app:
     build:
       context: ./app
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    volumes_from:
-      - applications
+    volumes:
+      - ./app:/timecapsule/
     ports:
       - "3100:3100"
     depends_on: [tc_database]
@@ -28,6 +23,4 @@ services:
 
 volumes:
   timecapsule-mysqldata:
-    driver: "local"
-  node_modules:
     driver: "local"
